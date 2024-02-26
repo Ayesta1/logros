@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BotonCampoLogro">
+        <!-- Ajusta los atributos según tu preferencia -->
+        <item name="android:background">@drawable/boton_campo</item>
+
+    </style>
+
+</resources>
