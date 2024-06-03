@@ -3,4 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="boton">#FF000000</color>
+    <color name="uncompleted">#FFFF0000</color>
+    <color name="completed">#FF00FF00</color>
 </resources>
