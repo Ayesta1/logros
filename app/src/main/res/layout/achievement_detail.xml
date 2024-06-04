@@ -10,21 +10,20 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:paddingBottom="8dp"/>
+        android:padding="8dp" />
 
     <TextView
         android:id="@+id/descriptionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:paddingBottom="16dp"/>
+        android:textSize="18sp"
+        android:padding="8dp" />
 
     <Button
-        android:id="@+id/statusButton"
+        android:id="@+id/completeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_red_light"
-        android:text="No completado"
-        android:textColor="@android:color/white" />
-
+        android:text="No Completado"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/holo_red_light" />
 </LinearLayout>

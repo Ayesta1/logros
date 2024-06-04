@@ -9,6 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface ApiService {
@@ -24,18 +25,12 @@ interface ApiService {
     @POST("users")
     fun createUser(@Body user: User): Call<User>
 
-    @POST("userachievements")
-    fun addUserAchievement(@Body userAchievement: UserAchievement): Call<Void>
+    @GET("userachievement")
+    fun getUserAchievements(): Call<List<UserAchievement>>
 
-    @DELETE("userachievements/{achievementid}/{userid}")
-    fun removeUserAchievement(
-        @Path("achievementid") achievementid: String,
-        @Path("userid") userid: String
-    ): Call<Void>
+    @PUT("userachievement/{id}")
+    fun updateUserAchievement(@Path("id") id: String, @Body userAchievement: UserAchievement): Call<UserAchievement>
 
-    @GET("userachievements/{userid}/{achievementid}")
-    fun checkUserAchievement(
-        @Path("userid") userid: String,
-        @Path("achievementid") achievementid: String
-    ): Call<UserAchievement?>
+    @POST("userachievement")
+    fun createUserAchievement(@Body userAchievement: UserAchievement): Call<UserAchievement>
 }

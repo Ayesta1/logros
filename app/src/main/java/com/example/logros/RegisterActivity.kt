@@ -18,7 +18,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var usernameEditText: EditText
     private lateinit var birthdayEditText: EditText
-    private lateinit var emailEditText: EditText
+    private lateinit var mailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var registerButton: Button
     private lateinit var apiService: ApiService
@@ -29,41 +29,39 @@ class RegisterActivity : AppCompatActivity() {
 
         usernameEditText = findViewById(R.id.usernameEditText)
         birthdayEditText = findViewById(R.id.birthdayEditText)
-        emailEditText = findViewById(R.id.emailEditText)
+        mailEditText = findViewById(R.id.mailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
         registerButton = findViewById(R.id.registerButton)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.118.3.35:8080/")
+            .baseUrl("http://192.168.1.15:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         apiService = retrofit.create(ApiService::class.java)
 
         registerButton.setOnClickListener {
-            val username = usernameEditText.text.toString().trim()
-            val birthday = birthdayEditText.text.toString().trim()
-            val email = emailEditText.text.toString().trim()
-            val password = passwordEditText.text.toString().trim()
+            val username = usernameEditText.text.toString()
+            val birthday = birthdayEditText.text.toString()
+            val mail = mailEditText.text.toString()
+            val password = passwordEditText.text.toString()
 
-            if (username.isNotEmpty() && birthday.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
-                registerUser(username, birthday, email, password)
+            if (username.isNotEmpty() && birthday.isNotEmpty() && mail.isNotEmpty() && password.isNotEmpty()) {
+                registerUser(username, birthday, mail, password)
             } else {
-                Toast.makeText(this, "Por favor, rellena todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun registerUser(username: String, birthday: String, email: String, password: String) {
-        val newUser = User(id = "", username = username, password = password, birthday = birthday, email = email)
+    private fun registerUser(username: String, birthday: String, mail: String, password: String) {
+        val user = User(username = username, birthday = birthday, mail = mail, password = password)
+        val call = apiService.createUser(user)
 
-        val call = apiService.createUser(newUser)
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@RegisterActivity, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-                    startActivity(intent)
+                    Toast.makeText(this@RegisterActivity, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
                     Toast.makeText(this@RegisterActivity, "Error al registrar el usuario", Toast.LENGTH_SHORT).show()
@@ -76,3 +74,4 @@ class RegisterActivity : AppCompatActivity() {
         })
     }
 }
+

@@ -1,5 +1,7 @@
 package com.example.logros
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -19,12 +21,12 @@ class AchievementDetailActivity : AppCompatActivity() {
 
     private lateinit var titleTextView: TextView
     private lateinit var descriptionTextView: TextView
-    private lateinit var statusButton: Button
+    private lateinit var completeButton: Button
     private lateinit var apiService: ApiService
-
-    private lateinit var achievementid: String
-    private lateinit var userid: String
-
+    private lateinit var sharedPreferences: SharedPreferences
+    private var achievementId: String? = null
+    private var userId: String? = null
+    private var id: String? = null
     private var isCompleted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,105 +35,112 @@ class AchievementDetailActivity : AppCompatActivity() {
 
         titleTextView = findViewById(R.id.titleTextView)
         descriptionTextView = findViewById(R.id.descriptionTextView)
-        statusButton = findViewById(R.id.statusButton)
+        completeButton = findViewById(R.id.completeButton)
 
-        // Obtener los datos del intent
-        achievementid = intent.getStringExtra("achievementid") ?: ""
-        userid = intent.getStringExtra("userid") ?: ""
-        val title = intent.getStringExtra("title") ?: ""
-        val description = intent.getStringExtra("description") ?: ""
+        sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        userId = sharedPreferences.getString("user_id", null)
+        achievementId = intent.getStringExtra("ACHIEVEMENT_ID")
 
-        titleTextView.text = title
-        descriptionTextView.text = description
+        if (achievementId == null || userId == null) {
+            Toast.makeText(this, "Error al cargar el logro", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
+        completeButton.setOnClickListener {
+            toggleCompletionStatus()
+        }
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.118.3.35:8080/")
+            .baseUrl("http://192.168.1.15:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         apiService = retrofit.create(ApiService::class.java)
 
-        // Verificar si el logro está completado
-        checkIfAchievementCompleted()
-
-        statusButton.setOnClickListener {
-            if (isCompleted) {
-                markAsNotCompleted()
-            } else {
-                markAsCompleted()
-            }
-        }
+        loadAchievementDetails()
+//        checkUserAchievementStatus()
+//
+//        completeButton.setOnClickListener {
+//            if (id == null) {
+//                completeAchievement()
+//            }
+//        }
     }
-
-    private fun checkIfAchievementCompleted() {
-        apiService.checkUserAchievement(userid, achievementid).enqueue(object : Callback<UserAchievement?> {
-            override fun onResponse(call: Call<UserAchievement?>, response: Response<UserAchievement?>) {
-                if (response.isSuccessful) {
-                    isCompleted = response.body() != null
-                    updateButton()
-                } else if (response.code() == 404) {
-                    isCompleted = false
-                    updateButton()
-                } else {
-                    Toast.makeText(this@AchievementDetailActivity, "Error al verificar el estado del logro", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<UserAchievement?>, t: Throwable) {
-                Toast.makeText(this@AchievementDetailActivity, "Error en la solicitud: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
-    private fun markAsCompleted() {
-        val currentDate = getCurrentDate()
-        val userAchievement = UserAchievement(achievementid, userid, currentDate)
-
-        apiService.addUserAchievement(userAchievement).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.isSuccessful) {
-                    isCompleted = true
-                    updateButton()
-                } else {
-                    Toast.makeText(this@AchievementDetailActivity, "Error al marcar como completado", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Toast.makeText(this@AchievementDetailActivity, "Error en la solicitud: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
-    private fun markAsNotCompleted() {
-        apiService.removeUserAchievement(achievementid, userid).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.isSuccessful) {
-                    isCompleted = false
-                    updateButton()
-                } else {
-                    Toast.makeText(this@AchievementDetailActivity, "Error al marcar como no completado", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Toast.makeText(this@AchievementDetailActivity, "Error en la solicitud: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
-    private fun updateButton() {
+    private fun toggleCompletionStatus() {
+        isCompleted = !isCompleted
         if (isCompleted) {
-            statusButton.text = "Completado"
-            statusButton.setBackgroundColor(resources.getColor(android.R.color.holo_green_light))
+            completeButton.text = "Completado"
+            completeButton.setBackgroundColor(getColor(android.R.color.holo_green_light))
         } else {
-            statusButton.text = "No Completado"
-            statusButton.setBackgroundColor(resources.getColor(android.R.color.holo_red_light))
+            completeButton.text = "No completado"
+            completeButton.setBackgroundColor(getColor(android.R.color.holo_red_light))
         }
     }
 
-    private fun getCurrentDate(): String {
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        return dateFormat.format(Date())
+    private fun loadAchievementDetails() {
+        val title = intent.getStringExtra("TITLE")
+        val description = intent.getStringExtra("DESCRIPTION")
+
+        titleTextView.text = title
+        descriptionTextView.text = description
     }
+
+//    private fun checkUserAchievementStatus() {
+//        val callUserAchievements = apiService.getUserAchievements()
+//        callUserAchievements.enqueue(object : Callback<List<UserAchievement>> {
+//            override fun onResponse(call: Call<List<UserAchievement>>, response: Response<List<UserAchievement>>) {
+//                if (response.isSuccessful && response.body() != null) {
+//                    val userAchievements = response.body()!!
+//                    val userAchievement = userAchievements.find {
+//                        it.userid == userId && it.achievementid == achievementId
+//                    }
+//
+//                    if (userAchievement != null) {
+//                        id = userAchievement.id
+//                        completeButton.text = "Completado"
+//                        completeButton.setBackgroundColor(resources.getColor(android.R.color.holo_green_light))
+//                    } else {
+//                        completeButton.text = "No Completado"
+//                        completeButton.setBackgroundColor(resources.getColor(android.R.color.holo_red_light))
+//                    }
+//                } else {
+//                    Toast.makeText(this@AchievementDetailActivity, "Error al comprobar el estado del logro", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<UserAchievement>>, t: Throwable) {
+//                Toast.makeText(this@AchievementDetailActivity, "Error en la solicitud: ${t.message}", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+//    }
+//
+//    private fun completeAchievement() {
+//        val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+//
+//        val userAchievement = UserAchievement(
+//            id = "", // Suponiendo que userAchievementId no es nulo
+//            userid = userId!!, // Suponiendo que userId no es nulo
+//            achievementid = achievementId!!, // Suponiendo que achievementId no es nulo
+//            completationdate = currentDate
+//        )
+//
+//        val call = apiService.updateUserAchievement(userAchievement.id, userAchievement)
+//        call.enqueue(object : Callback<UserAchievement> {
+//            override fun onResponse(call: Call<UserAchievement>, response: Response<UserAchievement>) {
+//                if (response.isSuccessful) {
+//                    val updatedUserAchievement = response.body()
+//                    // Aquí deberías manejar la respuesta del servidor y actualizar la interfaz de usuario según sea necesario
+//                    // Por ejemplo, mostrar un mensaje de éxito, cambiar el estado del botón, etc.
+//                    Toast.makeText(this@AchievementDetailActivity, "Logro completado", Toast.LENGTH_SHORT).show()
+//                } else {
+//                    Toast.makeText(this@AchievementDetailActivity, "Error al completar el logro", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<UserAchievement>, t: Throwable) {
+//                Toast.makeText(this@AchievementDetailActivity, "Error en la solicitud: ${t.message}", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+//    }
 }

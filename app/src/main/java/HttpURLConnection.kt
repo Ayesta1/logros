@@ -7,7 +7,7 @@ import java.net.URL
 
 class FetchDataFromApi : AsyncTask<Void, Void, JSONObject>() {
     override fun doInBackground(vararg params: Void?): JSONObject? {
-        val url = URL("http://10.118.3.35:8080/")
+        val url = URL("http://192.168.1.15:8080/")
         val connection = url.openConnection() as HttpURLConnection
         connection.requestMethod = "GET"
         val responseCode = connection.responseCode

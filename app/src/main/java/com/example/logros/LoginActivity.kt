@@ -1,8 +1,8 @@
 package com.example.logros
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.118.3.35:8080/")
+            .baseUrl("http://192.168.1.15:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 checkCredentials(username, password)
             } else {
-                Toast.makeText(this, "Por favor, rellena todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor, rellene todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -61,8 +61,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkCredentials(username: String, password: String) {
-        val callUsers = apiService.getUsers()
-        callUsers.enqueue(object : Callback<List<User>> {
+        val call = apiService.getUsers()
+        call.enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 if (response.isSuccessful && response.body() != null) {
                     val users = response.body()!!
@@ -70,10 +70,10 @@ class LoginActivity : AppCompatActivity() {
 
                     if (user != null) {
                         with(sharedPreferences.edit()) {
-                            putString("username", username)
-                            putBoolean("isLoggedIn", true)
+                            putString("username", user.username)
                             apply()
                         }
+
                         Toast.makeText(this@LoginActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
@@ -82,7 +82,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this@LoginActivity, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this@LoginActivity, "Error en la respuesta", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Error al obtener los usuarios", Toast.LENGTH_SHORT).show()
                 }
             }
 
