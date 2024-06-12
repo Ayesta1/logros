@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,20 +11,54 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:layout_margin="8dp"
         android:padding="8dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:layout_margin="8dp"
+        app:srcCompat="@drawable/landscapelogro" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/completeButton"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:text="No Completado"
+            android:textColor="@android:color/white"
+            android:layout_margin="8dp"
+            android:backgroundTint="@android:color/holo_red_light" />
+
+        <Button
+            android:id="@+id/verifyButton"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:text="Verificar"
+            android:textColor="@android:color/white"
+            android:layout_margin="8dp"
+            android:backgroundTint="@android:color/holo_blue_light" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/descriptionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
+        android:layout_margin="8dp"
         android:padding="8dp" />
 
-    <Button
-        android:id="@+id/completeButton"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No Completado"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@android:color/holo_red_light" />
+        android:layout_margin="8dp"
+        android:text="DD/MM/AAAA"
+        android:textAlignment="viewEnd" />
 </LinearLayout>

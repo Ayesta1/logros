@@ -1,126 +1,448 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="horizontal"
+    android:padding="4dp">
 
-    <Button
-        android:id="@+id/achievementButton1"
-        android:layout_width="match_parent"
+
+    <ScrollView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 1" />
+        android:padding="4dp">
 
-    <Button
-        android:id="@+id/achievementButton2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 2" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="4dp"
+            tools:ignore="ExtraText">
 
-    <Button
-        android:id="@+id/achievementButton3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 3" />
+            <!-- Logro 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="2dp">
 
-    <Button
-        android:id="@+id/achievementButton4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 4" />
+                <Button
+                    android:id="@+id/achievementStatus1"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_green_light"
+                    android:layout_margin="4dp"
+                    android:text="✔️" />
 
-    <Button
-        android:id="@+id/achievementButton5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 5" />
+                <Button
+                    android:id="@+id/achievementButton1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 1" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/achievementButton6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 6" />
+            <!-- Logro 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/achievementButton7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 7" />
+                <Button
+                    android:id="@+id/achievementStatus2"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
 
-    <Button
-        android:id="@+id/achievementButton8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 8" />
+                <Button
+                    android:id="@+id/achievementButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 2" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/achievementButton9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 9" />
+            <!-- Logro 3 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/achievementButton10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 10" />
+                <Button
+                    android:id="@+id/achievementStatus3"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
 
-    <Button
-        android:id="@+id/achievementButton11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 11" />
+                <Button
+                    android:id="@+id/achievementButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 3" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/achievementButton12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 12" />
+            <!-- Logro 4 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/achievementButton13"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 13" />
+                <Button
+                    android:id="@+id/achievementStatus4"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
 
-    <Button
-        android:id="@+id/achievementButton14"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 14" />
+                <Button
+                    android:id="@+id/achievementButton4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 4" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/achievementButton15"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 15" />
+            <!-- Logro 5 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/achievementButton16"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 16" />
+                <Button
+                    android:id="@+id/achievementStatus5"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
 
-    <Button
-        android:id="@+id/achievementButton17"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="Logro 17" />
+                <Button
+                    android:id="@+id/achievementButton5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 5" />
+            </LinearLayout>
 
+            <!-- Logro 6 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus6"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 6" />
+            </LinearLayout>
+
+            <!-- Logro 7 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus7"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 7" />
+            </LinearLayout>
+
+            <!-- Logro 8 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus8"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 8" />
+            </LinearLayout>
+
+            <!-- Logro 9 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus9"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 9" />
+            </LinearLayout>
+
+            <!-- Logro 10 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus10"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 10" />
+            </LinearLayout>
+
+            <!-- Logro 11 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus11"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 11" />
+            </LinearLayout>
+
+            <!-- Logro 12 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus12"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 12" />
+            </LinearLayout>
+
+            <!-- Logro 13 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus13"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 13" />
+            </LinearLayout>
+
+            <!-- Logro 14 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus14"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 14" />
+            </LinearLayout>
+
+            <!-- Logro 15 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus15"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 15" />
+            </LinearLayout>
+
+            <!-- Logro 16 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus16"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 16" />
+            </LinearLayout>
+
+            <!-- Logro 17 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/achievementStatus17"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:backgroundTint="#cc0000"
+                    android:layout_margin="4dp"
+                    android:text="❌️" />
+
+                <Button
+                    android:id="@+id/achievementButton17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:layout_margin="4dp"
+                    android:text="Logro 17" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

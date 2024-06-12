@@ -1,5 +1,8 @@
 package com.example.logros
 
+import FirstFragment
+import SecondFragment
+import ThirdFragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +16,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import androidx.fragment.app.Fragment
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +33,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val firstFragment = FirstFragment()
+        val secondFragment = SecondFragment()
+        val thirdFragment = ThirdFragment()
+
+        setCurrentFragment(firstFragment)
+
+//        bottomNavigationView.setOnNavigationItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.home -> setCurrentFragment(firstFragment)
+//                R.id.person -> setCurrentFragment(secondFragment)
+//                R.id.settings -> setCurrentFragment(thirdFragment)
+
+//            }
+//            true
+//        }
+
         button1 = findViewById(R.id.button1)
         button2 = findViewById(R.id.button2)
         button3 = findViewById(R.id.button3)
@@ -36,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         button6 = findViewById(R.id.button6)
         loginButton = findViewById(R.id.loginButton)
 
-        val sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
 
         if (!isLoggedIn) {
@@ -60,7 +81,10 @@ class MainActivity : AppCompatActivity() {
 
         val callCategories = apiService.getCategories()
         callCategories.enqueue(object : Callback<List<Category>> {
-            override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
+            override fun onResponse(
+                call: Call<List<Category>>,
+                response: Response<List<Category>>
+            ) {
                 if (response.isSuccessful && response.body() != null) {
                     val categories = response.body()!!
 
@@ -96,18 +120,34 @@ class MainActivity : AppCompatActivity() {
                             navigateToAchievements(categories[5].id)
                         }
                     } else {
-                        Toast.makeText(this@MainActivity, "No hay suficientes categorías", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "No hay suficientes categorías",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 } else {
-                    Toast.makeText(this@MainActivity, "Error en la respuesta", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, "Error en la respuesta", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
 
             override fun onFailure(call: Call<List<Category>>, t: Throwable) {
-                Toast.makeText(this@MainActivity, "Error en la solicitud: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@MainActivity,
+                    "Error en la solicitud: ${t.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
+
     }
+
+    private fun setCurrentFragment(fragment: Fragment) =
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment, fragment)
+            commit()
+        }
 
     private fun navigateToAchievements(categoryId: String) {
         val intent = Intent(this, AchievementsActivity::class.java)
