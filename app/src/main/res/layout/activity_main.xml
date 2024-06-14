@@ -1,24 +1,20 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:margin="4dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAligned="false"
-            android:margin="4dp"
             android:orientation="horizontal">
 
             <Button
@@ -28,7 +24,6 @@
                 android:layout_margin="4dp"
                 android:backgroundTint="@android:color/holo_orange_light"
                 android:drawableLeft="@drawable/ic_default_icon"
-                android:margin="4dp"
                 android:onClick="onButtonClick"
                 android:text="Categoría 1"
                 app:cornerRadius="32dp" />
@@ -40,7 +35,6 @@
                 android:layout_margin="4dp"
                 android:backgroundTint="@android:color/holo_orange_light"
                 android:drawableLeft="@drawable/ic_default_icon"
-                android:margin="4dp"
                 android:onClick="onButtonClick"
                 android:text="Categoría 2"
                 app:cornerRadius="32dp" />
@@ -52,7 +46,6 @@
                 android:layout_margin="4dp"
                 android:backgroundTint="@android:color/holo_orange_light"
                 android:drawableLeft="@drawable/ic_default_icon"
-                android:margin="4dp"
                 android:onClick="onButtonClick"
                 android:text="Categoría 3"
                 app:cornerRadius="32dp" />
@@ -95,38 +88,41 @@
                 android:text="Categoría 6"
                 app:cornerRadius="32dp" />
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="0">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="bottom|center"
+            android:orientation="horizontal">
 
             <Button
-                android:id="@+id/loginButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/supportButton"
+                android:layout_width="120dp"
+                android:layout_height="70dp"
                 android:layout_margin="4dp"
-                android:layout_gravity="center"
                 android:backgroundTint="@android:color/holo_blue_light"
-                android:text="Iniciar Sesión" />
+                android:text="Soporte" />
 
+            <Button
+                android:id="@+id/profileButton"
+                android:layout_width="125dp"
+                android:layout_height="70dp"
+                android:layout_margin="4dp"
+                android:backgroundTint="@android:color/holo_blue_light"
+                android:text="Perfil" />
+            <Button
+                android:id="@+id/settingsButton"
+                android:layout_width="125dp"
+                android:layout_height="70dp"
+                android:layout_margin="4dp"
+                android:backgroundTint="@android:color/holo_blue_light"
+                android:text="Ajustes" />
+        </LinearLayout>
     </LinearLayout>
-
-
-    <FrameLayout
-        android:id="@+id/flFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

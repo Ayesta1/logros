@@ -1,9 +1,5 @@
 package com.example.logros
 
-import FirstFragment
-import SecondFragment
-import ThirdFragment
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -16,8 +12,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import androidx.fragment.app.Fragment
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,26 +22,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var button5: Button
     private lateinit var button6: Button
     private lateinit var loginButton: Button
-
+    private lateinit var supportButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val firstFragment = FirstFragment()
-        val secondFragment = SecondFragment()
-        val thirdFragment = ThirdFragment()
-
-        setCurrentFragment(firstFragment)
-
-//        bottomNavigationView.setOnNavigationItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.home -> setCurrentFragment(firstFragment)
-//                R.id.person -> setCurrentFragment(secondFragment)
-//                R.id.settings -> setCurrentFragment(thirdFragment)
-
-//            }
-//            true
-//        }
 
         button1 = findViewById(R.id.button1)
         button2 = findViewById(R.id.button2)
@@ -55,20 +33,19 @@ class MainActivity : AppCompatActivity() {
         button4 = findViewById(R.id.button4)
         button5 = findViewById(R.id.button5)
         button6 = findViewById(R.id.button6)
-        loginButton = findViewById(R.id.loginButton)
+        loginButton = findViewById(R.id.profileButton)
+        supportButton = findViewById(R.id.supportButton)
 
         val sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
 
-        if (!isLoggedIn) {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-            return
-        }
-
         loginButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        supportButton.setOnClickListener {
+            val intent = Intent(this, SupportActivity::class.java)
             startActivity(intent)
         }
 
@@ -142,12 +119,6 @@ class MainActivity : AppCompatActivity() {
         })
 
     }
-
-    private fun setCurrentFragment(fragment: Fragment) =
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragment, fragment)
-            commit()
-        }
 
     private fun navigateToAchievements(categoryId: String) {
         val intent = Intent(this, AchievementsActivity::class.java)
