@@ -1,6 +1,8 @@
 package com.example.logros
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -16,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RegisterActivity : AppCompatActivity() {
 
+    private lateinit var sharedPreferences: SharedPreferences
     private lateinit var usernameEditText: EditText
     private lateinit var birthdayEditText: EditText
     private lateinit var mailEditText: EditText
@@ -33,6 +36,8 @@ class RegisterActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.passwordEditText)
         registerButton = findViewById(R.id.registerButton)
 
+        sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+
         val retrofit = Retrofit.Builder()
             .baseUrl("http://192.168.1.15:8080/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -45,22 +50,29 @@ class RegisterActivity : AppCompatActivity() {
             val birthday = birthdayEditText.text.toString()
             val mail = mailEditText.text.toString()
             val password = passwordEditText.text.toString()
+            val biography = ""
 
             if (username.isNotEmpty() && birthday.isNotEmpty() && mail.isNotEmpty() && password.isNotEmpty()) {
-                registerUser(username, birthday, mail, password)
+                registerUser(username, birthday, mail, password, biography)
             } else {
                 Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun registerUser(username: String, birthday: String, mail: String, password: String) {
-        val user = User(username = username, birthday = birthday, mail = mail, password = password)
+    private fun registerUser(username: String, birthday: String, mail: String, password: String, biography: String) {
+        val user = User(id = "", username = username, password = password, birthday = birthday, mail = mail, biography = "")
         val call = apiService.createUser(user)
 
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
+                    // Actualizar isLoggedIn a true en SharedPreferences
+                    with(sharedPreferences.edit()) {
+                        putBoolean("isLoggedIn", true)
+                        apply()
+                    }
+
                     Toast.makeText(this@RegisterActivity, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show()
                     finish()
                 } else {

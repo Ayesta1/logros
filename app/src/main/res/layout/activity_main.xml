@@ -2,8 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="5dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,9 +20,9 @@
                 android:id="@+id/button1"
                 android:layout_width="125dp"
                 android:layout_height="180dp"
-                android:layout_margin="4dp"
+                android:layout_margin="6dp"
                 android:backgroundTint="@android:color/holo_orange_light"
-                android:drawableLeft="@drawable/ic_default_icon"
+                android:drawableStart="@drawable/ic_default_icon"
                 android:onClick="onButtonClick"
                 android:text="Categoría 1"
                 app:cornerRadius="32dp" />
@@ -32,9 +31,9 @@
                 android:id="@+id/button2"
                 android:layout_width="125dp"
                 android:layout_height="180dp"
-                android:layout_margin="4dp"
+                android:layout_margin="6dp"
                 android:backgroundTint="@android:color/holo_orange_light"
-                android:drawableLeft="@drawable/ic_default_icon"
+                android:drawableStart="@drawable/ic_default_icon"
                 android:onClick="onButtonClick"
                 android:text="Categoría 2"
                 app:cornerRadius="32dp" />
@@ -43,9 +42,9 @@
                 android:id="@+id/button3"
                 android:layout_width="125dp"
                 android:layout_height="180dp"
-                android:layout_margin="4dp"
+                android:layout_margin="6dp"
                 android:backgroundTint="@android:color/holo_orange_light"
-                android:drawableLeft="@drawable/ic_default_icon"
+                android:drawableStart="@drawable/ic_default_icon"
                 android:onClick="onButtonClick"
                 android:text="Categoría 3"
                 app:cornerRadius="32dp" />
@@ -59,9 +58,9 @@
                 android:id="@+id/button4"
                 android:layout_width="125dp"
                 android:layout_height="180dp"
-                android:layout_margin="4dp"
+                android:layout_margin="6dp"
                 android:backgroundTint="@android:color/holo_orange_light"
-                android:drawableLeft="@drawable/ic_default_icon"
+                android:drawableStart="@drawable/ic_default_icon"
                 android:onClick="onButtonClick"
                 android:text="Categoría 4"
                 app:cornerRadius="32dp" />
@@ -70,9 +69,9 @@
                 android:id="@+id/button5"
                 android:layout_width="125dp"
                 android:layout_height="180dp"
-                android:layout_margin="4dp"
+                android:layout_margin="6dp"
                 android:backgroundTint="@android:color/holo_orange_light"
-                android:drawableLeft="@drawable/ic_default_icon"
+                android:drawableStart="@drawable/ic_default_icon"
                 android:onClick="onButtonClick"
                 android:text="Categoría 5"
                 app:cornerRadius="32dp" />
@@ -81,14 +80,16 @@
                 android:id="@+id/button6"
                 android:layout_width="125dp"
                 android:layout_height="180dp"
-                android:layout_margin="4dp"
+                android:layout_margin="6dp"
                 android:backgroundTint="@android:color/holo_orange_light"
-                android:drawableLeft="@drawable/ic_default_icon"
+                android:drawableStart="@drawable/ic_default_icon"
                 android:onClick="onButtonClick"
                 android:text="Categoría 6"
                 app:cornerRadius="32dp" />
         </LinearLayout>
     </LinearLayout>
+
+    <!-- FOOTER -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -99,30 +100,38 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="bottom|center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/supportButton"
-                android:layout_width="120dp"
-                android:layout_height="70dp"
-                android:layout_margin="4dp"
-                android:backgroundTint="@android:color/holo_blue_light"
-                android:text="Soporte" />
+            android:orientation="horizontal"
+            android:background="@android:color/holo_blue_light">
 
             <Button
                 android:id="@+id/profileButton"
                 android:layout_width="125dp"
                 android:layout_height="70dp"
-                android:layout_margin="4dp"
-                android:backgroundTint="@android:color/holo_blue_light"
+                android:layout_margin="6dp"
+                android:backgroundTint="#4040C0"
+                app:cornerRadius="8dp"
+                android:textColor="@android:color/white"
                 android:text="Perfil" />
             <Button
-                android:id="@+id/settingsButton"
+                android:id="@+id/homeButton"
                 android:layout_width="125dp"
                 android:layout_height="70dp"
-                android:layout_margin="4dp"
-                android:backgroundTint="@android:color/holo_blue_light"
-                android:text="Ajustes" />
+                android:layout_margin="6dp"
+                android:backgroundTint="#4040C0"
+                app:cornerRadius="8dp"
+                android:textColor="@android:color/white"
+                android:text="Home" />
+
+            <Button
+                android:id="@+id/supportButton"
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_margin="6dp"
+                android:backgroundTint="#4040C0"
+                app:cornerRadius="8dp"
+                android:textColor="@android:color/white"
+                android:text="Soporte" />
         </LinearLayout>
     </LinearLayout>
+    <!-- FOOTER -->
 </LinearLayout>

@@ -1,8 +1,8 @@
 package com.example.logros
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
 
                     if (user != null) {
                         with(sharedPreferences.edit()) {
-                            putString("username", user.username)
+                            putBoolean("isLoggedIn", true)
                             apply()
                         }
 

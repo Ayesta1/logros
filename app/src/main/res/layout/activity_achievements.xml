@@ -1,10 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:padding="4dp">
-
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -31,6 +30,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_green_light"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="✔️" />
 
                 <Button
@@ -39,6 +39,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 1" />
             </LinearLayout>
 
@@ -56,6 +57,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -65,6 +67,7 @@
                     android:padding="4dp"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 2" />
             </LinearLayout>
 
@@ -82,6 +85,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -90,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 3" />
             </LinearLayout>
 
@@ -107,6 +112,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -115,6 +121,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 4" />
             </LinearLayout>
 
@@ -132,6 +139,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -140,6 +148,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 5" />
             </LinearLayout>
 
@@ -157,6 +166,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -165,6 +175,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 6" />
             </LinearLayout>
 
@@ -182,6 +193,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -190,6 +202,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 7" />
             </LinearLayout>
 
@@ -207,6 +220,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -215,6 +229,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 8" />
             </LinearLayout>
 
@@ -232,6 +247,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -240,6 +256,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 9" />
             </LinearLayout>
 
@@ -257,6 +274,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -265,6 +283,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 10" />
             </LinearLayout>
 
@@ -282,6 +301,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -290,6 +310,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 11" />
             </LinearLayout>
 
@@ -307,6 +328,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -315,6 +337,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 12" />
             </LinearLayout>
 
@@ -332,6 +355,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -340,6 +364,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 13" />
             </LinearLayout>
 
@@ -357,6 +382,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -365,6 +391,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 14" />
             </LinearLayout>
 
@@ -382,6 +409,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -390,6 +418,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 15" />
             </LinearLayout>
 
@@ -407,6 +436,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -415,6 +445,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 16" />
             </LinearLayout>
 
@@ -432,6 +463,7 @@
                     android:padding="2dp"
                     android:backgroundTint="#cc0000"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="❌️" />
 
                 <Button
@@ -440,9 +472,55 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/holo_orange_dark"
                     android:layout_margin="4dp"
+                    app:cornerRadius="8dp"
                     android:text="Logro 17" />
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+    <!-- FOOTER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="bottom|center"
+            android:orientation="horizontal"
+            android:background="@android:color/holo_blue_light">
+
+            <Button
+                android:id="@+id/profileButton"
+                android:layout_width="125dp"
+                android:layout_height="70dp"
+                android:layout_margin="6dp"
+                android:backgroundTint="#4040C0"
+                app:cornerRadius="8dp"
+                android:textColor="@android:color/white"
+                android:text="Perfil" />
+            <Button
+                android:id="@+id/homeButton"
+                android:layout_width="125dp"
+                android:layout_height="70dp"
+                android:layout_margin="6dp"
+                android:backgroundTint="#4040C0"
+                app:cornerRadius="8dp"
+                android:textColor="@android:color/white"
+                android:text="Home" />
+
+            <Button
+                android:id="@+id/supportButton"
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_margin="6dp"
+                android:backgroundTint="#4040C0"
+                app:cornerRadius="8dp"
+                android:textColor="@android:color/white"
+                android:text="Soporte" />
+        </LinearLayout>
+    </LinearLayout>
+    <!-- FOOTER -->
+</RelativeLayout>
