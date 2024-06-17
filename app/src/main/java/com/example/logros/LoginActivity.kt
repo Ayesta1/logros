@@ -71,11 +71,13 @@ class LoginActivity : AppCompatActivity() {
                     if (user != null) {
                         with(sharedPreferences.edit()) {
                             putBoolean("isLoggedIn", true)
+                            putString("username", username)
+                            putString("user_id", user.id)
                             apply()
                         }
 
                         Toast.makeText(this@LoginActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        val intent = Intent(this@LoginActivity, ProfileActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {

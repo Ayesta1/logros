@@ -42,7 +42,40 @@ class AchievementsActivity : AppCompatActivity() {
             findViewById(R.id.achievementButton17)
         )
 
-        setupFooterButtons()
+        // FOOTER
+        val sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+        if (isLoggedIn) {
+            Toast.makeText(this, "isloggedIn", Toast.LENGTH_SHORT).show()
+        }
+
+        lateinit var profileButton: Button
+        lateinit var supportButton: Button
+        lateinit var homeButton: Button
+        profileButton = findViewById(R.id.profileButton)
+        supportButton = findViewById(R.id.supportButton)
+        homeButton = findViewById(R.id.homeButton)
+        supportButton.setOnClickListener {
+            val intent = Intent(this, SupportActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileButton.setOnClickListener {
+            if (isLoggedIn)
+            {
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+            }
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        // FOOTER
 
         val categoryId = intent.getStringExtra("CATEGORY_ID")?.toInt() ?: return
         val retrofit = Retrofit.Builder()

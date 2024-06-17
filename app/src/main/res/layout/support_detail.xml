@@ -3,31 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="8dp"
+        android:layout_height="80dp"
+        android:background="@android:color/holo_orange_light"
+        android:padding="16dp"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="34sp"
         android:textStyle="bold"
-        tools:text="Soporte" />
+        android:textColor="@android:color/white"
+        android:text="Soporte" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_margin="8dp"
+        android:layout_marginVertical="16dp"
         app:srcCompat="@drawable/app_icon_bitacora" />
 
     <TextView
         android:id="@+id/supportMainTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="4dp"
         android:padding="8dp"
         android:text="Si tienes algún problema con nuestra aplicación puede contactar con nuestro equipo de soporte (soporte@bitacora.com) o puede contactar con los desarrolladores directamente a nuestros correos personales."
         android:textAlignment="viewStart"
@@ -36,12 +38,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="4dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/queEsButton"
-            android:layout_width="165dp"
+            android:layout_width="185dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:backgroundTint="@android:color/holo_blue_light"
@@ -50,7 +52,7 @@
 
         <Button
             android:id="@+id/contactButton"
-            android:layout_width="165dp"
+            android:layout_width="185dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:backgroundTint="@android:color/holo_blue_light"

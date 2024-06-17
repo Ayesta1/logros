@@ -1,6 +1,7 @@
 package com.example.logros
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
@@ -34,7 +35,40 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        // FOOTER
+        val sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+        if (isLoggedIn) {
+            Toast.makeText(this, "isloggedIn", Toast.LENGTH_SHORT).show()
+        }
+        lateinit var profileButton: Button
+        lateinit var supportButton: Button
+        lateinit var homeButton: Button
+        profileButton = findViewById(R.id.profileButton)
+        supportButton = findViewById(R.id.supportButton)
+        homeButton = findViewById(R.id.homeButton)
+        supportButton.setOnClickListener {
+            val intent = Intent(this, SupportActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileButton.setOnClickListener {
+            if (isLoggedIn)
+            {
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+            }
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        // FOOTER
+
         username = sharedPreferences.getString("username", null).toString()
         usernameTextView = findViewById(R.id.usernameTextView)
         biographyTextMultiLine = findViewById(R.id.biographyTextMultiLine)

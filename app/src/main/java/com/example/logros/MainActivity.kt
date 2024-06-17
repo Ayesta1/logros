@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var button4: Button
     private lateinit var button5: Button
     private lateinit var button6: Button
-    private lateinit var loginButton: Button
-    private lateinit var supportButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,10 +31,14 @@ class MainActivity : AppCompatActivity() {
         button4 = findViewById(R.id.button4)
         button5 = findViewById(R.id.button5)
         button6 = findViewById(R.id.button6)
-        loginButton = findViewById(R.id.profileButton)
-        supportButton = findViewById(R.id.supportButton)
 
         // FOOTER
+        val sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+        if (isLoggedIn) {
+            Toast.makeText(this@MainActivity, "isloggedIn", Toast.LENGTH_SHORT).show()
+        }
         lateinit var profileButton: Button
         lateinit var supportButton: Button
         lateinit var homeButton: Button
@@ -49,20 +51,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         profileButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
-
-        homeButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-        // FOOTER
-
-        val sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
-        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
-
-        loginButton.setOnClickListener {
             if (isLoggedIn)
             {
                 val intent = Intent(this, ProfileActivity::class.java)
@@ -72,10 +60,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        supportButton.setOnClickListener {
-            val intent = Intent(this, SupportActivity::class.java)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+        // FOOTER
 
         val retrofit = Retrofit.Builder()
             .baseUrl("http://192.168.1.15:8080/")

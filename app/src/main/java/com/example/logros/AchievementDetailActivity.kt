@@ -38,10 +38,41 @@ class AchievementDetailActivity : AppCompatActivity() {
         descriptionTextView = findViewById(R.id.descriptionTextView)
         completeButton = findViewById(R.id.completeButton)
 
-        setupFooterButtons()
+        // FOOTER
+        val sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
 
-        sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-        userId = sharedPreferences.getString("user_id", null) // Obtener el ID del usuario desde SharedPreferences
+        if (isLoggedIn) {
+            Toast.makeText(this, "isloggedIn", Toast.LENGTH_SHORT).show()
+        }
+        lateinit var profileButton: Button
+        lateinit var supportButton: Button
+        lateinit var homeButton: Button
+        profileButton = findViewById(R.id.profileButton)
+        supportButton = findViewById(R.id.supportButton)
+        homeButton = findViewById(R.id.homeButton)
+        supportButton.setOnClickListener {
+            val intent = Intent(this, SupportActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileButton.setOnClickListener {
+            if (isLoggedIn)
+            {
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+            }
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        // FOOTER
+
+        userId = sharedPreferences.getString("user_id", null)
 
         if (userId == null) {
             Toast.makeText(this, "Error al cargar el logro", Toast.LENGTH_SHORT).show()
@@ -66,24 +97,6 @@ class AchievementDetailActivity : AppCompatActivity() {
         checkUserAchievementStatus()
     }
 
-    private fun setupFooterButtons() {
-        val profileButton: Button = findViewById(R.id.profileButton)
-        val supportButton: Button = findViewById(R.id.supportButton)
-        val homeButton: Button = findViewById(R.id.homeButton)
-
-        supportButton.setOnClickListener {
-            startActivity(Intent(this, SupportActivity::class.java))
-        }
-
-        profileButton.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
-
-        homeButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
-    }
-
     private fun toggleCompletionStatus() {
         isCompleted = !isCompleted
         if (isCompleted) {
@@ -93,7 +106,6 @@ class AchievementDetailActivity : AppCompatActivity() {
         } else {
             completeButton.text = "No completado"
             completeButton.setBackgroundColor(getColor(android.R.color.holo_red_light))
-            // Aquí podrías implementar la lógica para marcar como no completado si lo deseas
         }
     }
 
