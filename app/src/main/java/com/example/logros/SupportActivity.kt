@@ -55,33 +55,12 @@ class SupportActivity : AppCompatActivity() {
         }
         // FOOTER
 
-        sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-        userId = sharedPreferences.getString("user_id", null)
-        achievementId = intent.getStringExtra("ACHIEVEMENT_ID")
-
         queEsButton.setOnClickListener {
             toggleQueEsStatus()
         }
-
         contactButton.setOnClickListener {
             toggleContactStatus()
         }
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.15:8080/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        apiService = retrofit.create(ApiService::class.java)
-
-        loadAchievementDetails()
-//        checkUserAchievementStatus()
-//
-//        completeButton.setOnClickListener {
-//            if (id == null) {
-//                completeAchievement()
-//            }
-//        }
     }
     private fun toggleQueEsStatus() {
         queEsPressed = !queEsPressed
@@ -96,7 +75,6 @@ class SupportActivity : AppCompatActivity() {
             queEsButton.setBackgroundColor(getColor(android.R.color.holo_blue_light))
         }
     }
-
     private fun toggleContactStatus() {
         contactPressed = !contactPressed
         if (contactPressed) {
@@ -109,12 +87,5 @@ class SupportActivity : AppCompatActivity() {
             supportTextView.text = ""
             contactButton.setBackgroundColor(getColor(android.R.color.holo_blue_light))
         }
-    }
-
-    private fun loadAchievementDetails() {
-        val title = intent.getStringExtra("TITLE")
-
-        titleTextView.text = "Soporte"
-        supportTextView.text = ""
     }
 }

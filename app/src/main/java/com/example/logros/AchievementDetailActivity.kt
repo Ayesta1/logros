@@ -106,6 +106,7 @@ class AchievementDetailActivity : AppCompatActivity() {
         } else {
             completeButton.text = "No completado"
             completeButton.setBackgroundColor(getColor(android.R.color.holo_red_light))
+            unCompleteAchievement()
         }
     }
 
@@ -131,11 +132,11 @@ class AchievementDetailActivity : AppCompatActivity() {
                         id = userAchievement.id
                         isCompleted = true
                         completeButton.text = "Completado"
-                        completeButton.setBackgroundColor(resources.getColor(android.R.color.holo_green_light))
+                        completeButton.setBackgroundColor(getColor(android.R.color.holo_green_light))
                     } else {
                         isCompleted = false
                         completeButton.text = "No Completado"
-                        completeButton.setBackgroundColor(resources.getColor(android.R.color.holo_red_light))
+                        completeButton.setBackgroundColor(getColor(android.R.color.holo_red_light))
                     }
                 } else {
                     Toast.makeText(this@AchievementDetailActivity, "Error al comprobar el estado del logro", Toast.LENGTH_SHORT).show()
@@ -148,6 +149,8 @@ class AchievementDetailActivity : AppCompatActivity() {
         })
     }
 
+    private fun unCompleteAchievement() {
+    }
     private fun completeAchievement() {
         val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
 

@@ -1,6 +1,5 @@
 package com.example.logros
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -100,24 +99,6 @@ class AchievementsActivity : AppCompatActivity() {
                 Toast.makeText(this@AchievementsActivity, "Error en la solicitud: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
-    }
-
-    private fun setupFooterButtons() {
-        val profileButton: Button = findViewById(R.id.profileButton)
-        val supportButton: Button = findViewById(R.id.supportButton)
-        val homeButton: Button = findViewById(R.id.homeButton)
-
-        supportButton.setOnClickListener {
-            startActivity(Intent(this, SupportActivity::class.java))
-        }
-
-        profileButton.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
-
-        homeButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
     }
 
     private fun updateButtonsWithAchievements(achievements: List<Achievement>) {
