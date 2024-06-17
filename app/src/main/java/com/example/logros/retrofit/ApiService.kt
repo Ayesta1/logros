@@ -24,6 +24,9 @@ interface ApiService {
     @GET("users")
     fun getUsers(): Call<List<User>>
 
+    @DELETE("/users/{id}")
+    suspend fun deleteUser(@Path("id") userId: String): Response<Void>
+
     @POST("users")
     fun createUser(@Body user: User): Call<User>
 
@@ -32,11 +35,6 @@ interface ApiService {
 
     @PUT("userachievement/{id}")
     fun updateUserAchievement(@Path("id") id: String, @Body userAchievement: UserAchievement): Call<UserAchievement>
-
-    @POST("userachievement")
-    fun createUserAchievement(@Body userAchievement: UserAchievement): Call<UserAchievement>
-    @GET("users/{username}")
-    fun getUserByUsername(@Path("username") username: String): Call<User>
 
     @PUT("/users/{id}/biography")
     suspend fun updateUserBio(@Path("id") userId: String, @Body bioUpdateRequest: BioUpdateRequest): Response<User>

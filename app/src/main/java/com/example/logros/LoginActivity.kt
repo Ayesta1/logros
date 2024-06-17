@@ -53,7 +53,6 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Por favor, rellene todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
-
         registerButton.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
@@ -67,15 +66,14 @@ class LoginActivity : AppCompatActivity() {
                 if (response.isSuccessful && response.body() != null) {
                     val users = response.body()!!
                     val user = users.find { it.username == username && it.password == password }
-
                     if (user != null) {
                         with(sharedPreferences.edit()) {
                             putBoolean("isLoggedIn", true)
                             putString("username", username)
                             putString("user_id", user.id)
+                            putString("mail", user.mail)
                             apply()
                         }
-
                         Toast.makeText(this@LoginActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@LoginActivity, ProfileActivity::class.java)
                         startActivity(intent)
@@ -87,7 +85,6 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "Error al obtener los usuarios", Toast.LENGTH_SHORT).show()
                 }
             }
-
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
                 Toast.makeText(this@LoginActivity, "Error en la solicitud: ${t.message}", Toast.LENGTH_SHORT).show()
             }

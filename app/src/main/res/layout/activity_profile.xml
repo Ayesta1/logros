@@ -8,24 +8,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@android:color/holo_orange_light">
 
         <ImageView
-            android:id="@id/profileImageView"
+            android:id="@+id/profileImageView"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginVertical="8dp"
-            android:layout_marginStart="130dp"
-            tools:srcCompat="@drawable/profilephoto_default" />
+            android:layout_marginVertical="16dp"
+            android:layout_marginStart="145dp"
+            android:src="@drawable/profile_photo_default" />
 
         <Button
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginVertical="40dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginVertical="50dp"
             android:backgroundTint="@android:color/holo_blue_light"
             android:text="Guardar"
             android:textColor="@android:color/white" />
@@ -41,6 +40,16 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/mailTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp"
+        android:text="Correo"
+        android:textAlignment="center"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/biographyTextMultiLine"

@@ -44,30 +44,22 @@ class AchievementsActivity : AppCompatActivity() {
         // FOOTER
         val sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
-
-        if (isLoggedIn) {
-            Toast.makeText(this, "isloggedIn", Toast.LENGTH_SHORT).show()
-        }
-
-        lateinit var profileButton: Button
-        lateinit var supportButton: Button
-        lateinit var homeButton: Button
-        profileButton = findViewById(R.id.profileButton)
-        supportButton = findViewById(R.id.supportButton)
-        homeButton = findViewById(R.id.homeButton)
+        val profileButton: Button = findViewById(R.id.profileButton)
+        val supportButton: Button = findViewById(R.id.supportButton)
+        val homeButton: Button = findViewById(R.id.homeButton)
         supportButton.setOnClickListener {
             val intent = Intent(this, SupportActivity::class.java)
             startActivity(intent)
         }
 
         profileButton.setOnClickListener {
-            if (isLoggedIn)
-            {
+            if (isLoggedIn) {
                 val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)
+            } else {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
             }
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
         }
 
         homeButton.setOnClickListener {

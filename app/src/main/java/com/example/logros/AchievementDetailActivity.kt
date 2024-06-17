@@ -1,8 +1,7 @@
 package com.example.logros
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -16,7 +15,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 class AchievementDetailActivity : AppCompatActivity() {
 
@@ -24,7 +24,6 @@ class AchievementDetailActivity : AppCompatActivity() {
     private lateinit var descriptionTextView: TextView
     private lateinit var completeButton: Button
     private lateinit var apiService: ApiService
-    private lateinit var sharedPreferences: SharedPreferences
     private var achievementId: String? = null
     private var userId: String? = null
     private var id: String? = null
@@ -42,28 +41,22 @@ class AchievementDetailActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
 
-        if (isLoggedIn) {
-            Toast.makeText(this, "isloggedIn", Toast.LENGTH_SHORT).show()
-        }
-        lateinit var profileButton: Button
-        lateinit var supportButton: Button
-        lateinit var homeButton: Button
-        profileButton = findViewById(R.id.profileButton)
-        supportButton = findViewById(R.id.supportButton)
-        homeButton = findViewById(R.id.homeButton)
+        val profileButton: Button = findViewById(R.id.profileButton)
+        val supportButton: Button = findViewById(R.id.supportButton)
+        val homeButton: Button = findViewById(R.id.homeButton)
         supportButton.setOnClickListener {
             val intent = Intent(this, SupportActivity::class.java)
             startActivity(intent)
         }
 
         profileButton.setOnClickListener {
-            if (isLoggedIn)
-            {
+            if (isLoggedIn) {
                 val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)
+            } else {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
             }
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
         }
 
         homeButton.setOnClickListener {
@@ -97,6 +90,7 @@ class AchievementDetailActivity : AppCompatActivity() {
         checkUserAchievementStatus()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun toggleCompletionStatus() {
         isCompleted = !isCompleted
         if (isCompleted) {
@@ -121,6 +115,7 @@ class AchievementDetailActivity : AppCompatActivity() {
     private fun checkUserAchievementStatus() {
         val callUserAchievements = apiService.getUserAchievements()
         callUserAchievements.enqueue(object : Callback<List<UserAchievement>> {
+            @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call<List<UserAchievement>>, response: Response<List<UserAchievement>>) {
                 if (response.isSuccessful && response.body() != null) {
                     val userAchievements = response.body()!!
@@ -138,8 +133,6 @@ class AchievementDetailActivity : AppCompatActivity() {
                         completeButton.text = "No Completado"
                         completeButton.setBackgroundColor(getColor(android.R.color.holo_red_light))
                     }
-                } else {
-                    Toast.makeText(this@AchievementDetailActivity, "Error al comprobar el estado del logro", Toast.LENGTH_SHORT).show()
                 }
             }
 

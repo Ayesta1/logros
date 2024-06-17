@@ -1,7 +1,6 @@
 package com.example.logros
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
@@ -16,6 +15,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+@Suppress("UNUSED_EXPRESSION")
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
@@ -50,24 +50,23 @@ class RegisterActivity : AppCompatActivity() {
             val birthday = birthdayEditText.text.toString()
             val mail = mailEditText.text.toString()
             val password = passwordEditText.text.toString()
-            val biography = ""
+            ""
 
             if (username.isNotEmpty() && birthday.isNotEmpty() && mail.isNotEmpty() && password.isNotEmpty()) {
-                registerUser(username, birthday, mail, password, biography)
+                registerUser(username, birthday, mail, password)
             } else {
                 Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun registerUser(username: String, birthday: String, mail: String, password: String, biography: String) {
+    private fun registerUser(username: String, birthday: String, mail: String, password: String) {
         val user = User(id = "", username = username, password = password, birthday = birthday, mail = mail, biography = "")
         val call = apiService.createUser(user)
 
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
-                    // Actualizar isLoggedIn a true en SharedPreferences
                     with(sharedPreferences.edit()) {
                         putBoolean("isLoggedIn", true)
                         apply()
@@ -86,4 +85,3 @@ class RegisterActivity : AppCompatActivity() {
         })
     }
 }
-
